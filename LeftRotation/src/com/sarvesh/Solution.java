@@ -1,0 +1,35 @@
+package com.sarvesh;
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scanner = null;
+        int[] array = null;
+        int rotations = 0;
+        try {
+            scanner = new Scanner(System.in);
+            String firstLineStr = scanner.nextLine();
+            String[] firstLineSplit = firstLineStr.split(" ");
+            int arrayLength = Integer.parseInt(firstLineSplit[0]);
+            array = new int[arrayLength];
+            rotations = Integer.parseInt(firstLineSplit[1]);
+
+            String secondLineStr = scanner.nextLine();
+            String[] secondLineSplit = secondLineStr.split(" ");
+            for (int i = 0; i < secondLineSplit.length; i++) {
+                array[i] = Integer.parseInt(secondLineSplit[i]);
+            }
+        } finally {
+            assert scanner != null;
+            scanner.close();
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            int index = (i + rotations) % array.length;
+            System.out.print(array[index] + " ");
+        }
+    }
+}
